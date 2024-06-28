@@ -82,7 +82,6 @@ public class GUI extends JFrame {
         bt[5].setFont(new Font("Arial", Font.BOLD, 20));
         bt[9].setFont(new Font("Arial", Font.BOLD, 20));
 /*
-            button_name[i].setFont(new Font("Arial", Font.PLAIN, 17));
 
             if (((i >= 4) && (i <= 6)) || ((i >= 8) && (i <= 10)) || ((i >= 12) && (i <= 14)) || (i == 16)|| (i == 17))
                 bt[i].addActionListener(new Number()); // 숫자버튼을 누르면
