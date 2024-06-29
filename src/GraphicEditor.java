@@ -1,27 +1,19 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Path2D;
 import javax.swing.*;
 
 public class GraphicEditor {
     private boolean LineMode = false;
-    private boolean PolyLineMode = false;
     private boolean CircleMode = false;
     private boolean RectangleMode = false;
-    private boolean ColorMode = false;
-    private boolean ThicknessMode = false;
-    private boolean StyleMode = false;
-    private boolean Mode1 = false;
-    private boolean Mode2= false;
-    private boolean Mode3 = false;
-    private boolean Load= false;
-    private boolean Save = false;
-
 
     public static void main(String[] args) {
         new GraphicEditor();
     }
-//화면
+
     public GraphicEditor() {
+        // 프레임 설정
         JFrame frame = new JFrame("그림판");
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -29,20 +21,23 @@ public class GraphicEditor {
         frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // 버튼 패널 설정
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(17, 1, 5, 5));
         buttonPanel.setBounds(0, 0, 250, 860);
         buttonPanel.setBackground(new Color(230, 230, 220));
         frame.add(buttonPanel);
 
+        // 버튼 이름 배열
         String[] buttonNames = {
-                "[Draw]", "Line", "PolyLine", "Circle", "Rectangle",
+                "[Draw]", "FreeLine", "Line", "Circle", "Rectangle",
                 "[Property]", "Color", "Thickness", "Style",
                 "[More]", "1", "2", "3", "LOAD", "SAVE"
         };
 
         JButton[] buttons = new JButton[buttonNames.length];
 
+        // 버튼 생성 및 이벤트 리스너 추가
         for (int i = 0; i < buttons.length; i++) {
             buttons[i] = new JButton(buttonNames[i]);
             buttonPanel.add(buttons[i]);
@@ -50,186 +45,47 @@ public class GraphicEditor {
             buttons[i].setBorderPainted(false);
             buttons[i].setOpaque(false);
 
-            // 버튼 텍스트를 통해 드로잉 모드 설정
+            // 버튼 텍스트로 모드 세팅
             buttons[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton sourceButton = (JButton) e.getSource();
 
-                    //선 그리기
+                    // 선 그리기
                     if (sourceButton.getText().equals("Line")) {
                         LineMode = true;
-                        PolyLineMode = false;
                         CircleMode = false;
                         RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
                     }
-                    //곡선 그리기
-                    else if (sourceButton.getText().equals("Polyline")) {
-                        LineMode = false;
-                        PolyLineMode = true;
-                        CircleMode = false;
-                        RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
-                    }
-                    //원 그리기
+                    // 원 그리기
                     else if (sourceButton.getText().equals("Circle")) {
                         LineMode = false;
-                        PolyLineMode = false;
                         CircleMode = true;
                         RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
+
                     }
-                    //사각형 그리기
+                    // 사각형 그리기
                     else if (sourceButton.getText().equals("Rectangle")) {
                         LineMode = false;
-                        PolyLineMode = false;
                         CircleMode = false;
                         RectangleMode = true;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
-                    }
-                    //색 선택
-                    else if (sourceButton.getText().equals("Color")) {
-                        LineMode = false;
-                        PolyLineMode = false;
-                        CircleMode = false;
-                        RectangleMode = false;
-                        ColorMode = true;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
-                    }
-                    //두께 선택
-                    else if (sourceButton.getText().equals("Thickness")) {
-                        LineMode = false;
-                        PolyLineMode = false;
-                        CircleMode = false;
-                        RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = true;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
-                    }
-                    //1
-                    else if (sourceButton.getText().equals("1")) {
-                        LineMode = false;
-                        PolyLineMode = false;
-                        CircleMode = false;
-                        RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = true;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
-                    }
-                    //2
-                    else if (sourceButton.getText().equals("2")) {
-                        LineMode = false;
-                        PolyLineMode = false;
-                        CircleMode = false;
-                        RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= true;
-                        Mode3 = false;
-                        Load = false;
-                        Save = false;
-                    }
-                    //3
-                    else if (sourceButton.getText().equals("3")) {
-                        LineMode = false;
-                        PolyLineMode = false;
-                        CircleMode = false;
-                        RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = true;
-                        Load = false;
-                        Save = false;
 
                     }
-                    else if (sourceButton.getText().equals("Load")) {
+                    else {
                         LineMode = false;
-                        PolyLineMode = false;
                         CircleMode = false;
                         RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = true;
-                        Save = false;
-
                     }
-                    else if (sourceButton.getText().equals("Save")) {
-                        LineMode = false;
-                        PolyLineMode = false;
-                        CircleMode = false;
-                        RectangleMode = false;
-                        ColorMode = false;
-                        ThicknessMode = false;
-                        StyleMode = false;
-                        Mode1 = false;
-                        Mode2= false;
-                        Mode3 = false;
-                        Load = false;
-                        Save = true;
+                }
+            });
+        }
 
-                    }
-                } //액션퍼폼
-            }); //액션리스너
-        } //버튼
-        //화면 꾸미기
+        // 강조할 버튼의 폰트 조정
         buttons[0].setFont(new Font("Serif", Font.BOLD, 23));
         buttons[5].setFont(new Font("Serif", Font.BOLD, 23));
         buttons[9].setFont(new Font("Serif", Font.BOLD, 23));
 
+        // 캔버스 패널 설정
         CanvasPanel canvasPanel = new CanvasPanel();
         canvasPanel.setBounds(250, 0, 950, 800);
         canvasPanel.setBackground(Color.WHITE);
@@ -238,63 +94,72 @@ public class GraphicEditor {
         frame.setVisible(true);
     }
 
-
-//내부구현
+    // 내부 구현
     private class CanvasPanel extends JPanel {
-
-        private int startX, startY, endX, endY; //좌표설정
+        private int startX, startY, endX, endY; // 좌표 설정
+        private boolean drawing = false; // 그리기 상태
 
         public CanvasPanel() {
             setLayout(null);
 
-
-        //마우스 리스너
-
+            // 마우스 리스너
             addMouseListener(new MouseAdapter() {
-
-                //마우스를 누를 때
+                // 마우스를 누를 때
                 @Override
                 public void mousePressed(MouseEvent e) {
-
-                    if (LineMode) {
-                    //    drawing = true; //현재 상태 트루
-                        startX = e.getX(); //x좌표 받아오기
-                        startY = e.getY(); //Y좌표 받아오기
-                   // else if(){
-
-                  //  }
-
-                    }
+                        startX = e.getX(); // x좌표 받아오기
+                        startY = e.getY(); // y좌표 받아오기
+                        drawing = true; // 그리기 상태 true
                 }
-                //마우스 놓았을 때
+
+                // 마우스 놓았을 때
                 @Override
                 public void mouseReleased(MouseEvent e) {
-
-                    repaint();
+                    if (drawing) {
+                        endX = e.getX(); // x좌표 받아오기
+                        endY = e.getY(); // y좌표 받아오기
+                        drawing = false; // 그리기 상태 false
+                        repaint(); // 화면 갱신
+                    }
                 }
             });
 
-    //마우스 모션 리스너
+            // 마우스 모션 리스너
             addMouseMotionListener(new MouseAdapter() {
-
-                //드래그 중일 때 마우스 움직이는대로 좌표값 받아와서 화면에 띄우기
+                // 드래그 중일 때 마우스 움직이는 대로 좌표값 받아와서 화면에 띄우기
                 @Override
                 public void mouseDragged(MouseEvent e) {
-
+                    if (drawing) {
                         endX = e.getX();
                         endY = e.getY();
                         repaint();
+                    }
                 }
             });
         }
-        //초기화
+
+        // 모드 구현
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-                g.drawLine(startX, startY, endX, endY);
-               // g.drawRect(startX,startY,endX,endY);
+            Graphics2D g2;
+            g2 = (Graphics2D)g;
+            {
+                // 선 그리기
+                if (LineMode) {
+                    g.drawLine(startX, startY, endX, endY);
+                }
+                // 원 그리기
+                else if (CircleMode) {
+                     g.drawOval(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX-startX), Math.abs(endY-startY));
+                }
+                //사각형 그리기
+                else if (RectangleMode){
+                     g.drawRect(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX-startX), Math.abs(endY-startY));
+
+                }
+            }
         }
-
-
     }
 }
+

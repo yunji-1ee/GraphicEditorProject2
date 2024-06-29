@@ -66,7 +66,7 @@
       <updated>1719551128128</updated>
       <workItem from="1719551130221" duration="9568000" />
       <workItem from="1719561073036" duration="25489000" />
-      <workItem from="1719646890314" duration="4207000" />
+      <workItem from="1719646890314" duration="7769000" />
     </task>
     <task id="LOCAL-00001" summary="Project2_Day1. interface">
       <option name="closed" value="true" />
@@ -100,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719646117841</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Project2_Day1. afternoon 6.31">
+      <option name="closed" value="true" />
+      <created>1719653514836</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719653514836</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +118,7 @@
     <MESSAGE value="Project2_Day1. interface" />
     <MESSAGE value="Project2_Day1. afternoon" />
     <MESSAGE value="Project2_Day1. afternoon 4:30" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day1. afternoon 4:30" />
+    <MESSAGE value="Project2_Day1. afternoon 6.31" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day1. afternoon 6.31" />
   </component>
 </project>
