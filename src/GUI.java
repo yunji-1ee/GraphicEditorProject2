@@ -1,119 +1,95 @@
 import java.awt.*;
 import javax.swing.*;
-import java.util.*;
-import java.awt.event.*;
-
-import javax.swing.event.*;
-import javax.swing.JButton;
-
-/*
-<그림판 만들기>
-패널 위에 그림그리기
-
-[패널의 두 가지 기능]
-1.컴포넌트의 복잡한 배치를 도와준다
-2.그림을 그릴 수 있다 --> JPanel을 상속받아야 함
-
-Graphics -> 추상클래스 : 그림그리는데 필요한 여러가지 메소드를 정의
-
-1> 화면 띄우기 v
-1-1> 화면에 버튼패널, 캔버스패널 만들고 프레임에 추가하기
-2> 버튼패널 안에 버튼 넣기
-*/
-
-public class GUI extends JFrame {
-    JFrame frame = new JFrame("그림을 그려보아요");
-    JPanel canvas_panel = new JPanel();
-    JPanel button_panel = new JPanel();
-  //  JButton button = new JButton();
-    //GraphicDraw draw = new GraphicDraw(); // 연습
-    // DrawLine line = new DrawLine();
 
 
-    public static void main(String[] args) { //메인함수
+//-------------------------------------------------------------------------------------
+
+public class GUI {
+
+    public static void main(String[] args) {
         new GUI();
     }
 
-    public GUI() { //초기화
-        //프레임세팅
+    public GUI() {
+        // 프레임 세팅
 
-        frame.setLayout(null); //좌표값 직접 정하기
-        frame.setLocationRelativeTo(null); // 프레임 정중앙에 위치
-        frame.setSize(900, 600);
-        frame.setResizable(false);//화면크기 조절은? -> 나중에 보고 더 나은 방향으로 설정
-        frame.setVisible(true);
+        JButton lineButton = new JButton();
+        JButton polylineButton = new JButton();
+        JButton circle = new JButton();
+
+    //프레임
+    JFrame frame = new JFrame("그림판");
+        frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
+        frame.setSize(1200, 800);
+        frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        //프레임에 패널 넣기
-
-        //캔버스
-        frame.add(canvas_panel);
-        canvas_panel.setLayout(null);
-        canvas_panel.setBounds(180, 0, 750, 600);
-        canvas_panel.setBackground(Color.WHITE);
-
-        // 버튼
-        frame.add(button_panel);
-        button_panel.setLayout(null);
-        button_panel.setBounds(0, 0, 250, 600);
+    //버튼패널
+    JPanel button_panel = new JPanel();
+        // 버튼 패널 설정
+        button_panel.setLayout(new GridLayout(17, 1, 5, 5)); // 행, 열, 버튼 간격
+        button_panel.setBounds(0, 0, 250, 800);
         button_panel.setBackground(new Color(230, 230, 220));
+        frame.add(button_panel);
 
-        String[] button_name = { // 버튼이름
-                "[Draw]", "• line     ", "• polyLone ", "• circle   ", "• rectangle",
-                "[Property]", "• color    ", "• thickness ", "• style    ", "[More]", "1", "2", "3"}; // 버튼이 너무 많아서 panel과 배열로 만들기
+    //버튼
+        String[] button_name = {
+                "[Draw]", "line", "polyLone", "circle", "rectangle",
+                "[Property]", "color", "thickness", "style", "[More]", "1", "2", "3",
+                "LOAD", "SAVE"
+        };
 
-        button_panel.setLayout(new GridLayout(15, 1, -50, 0)); // 행과 열, 버튼사이 간격 정하기
-
-
-
-        JButton[] bt = new JButton[button_name.length]; // 버튼의 길이 -> 반복문을 통해 이름을 입력하기 위함
+    JButton[] bt = new JButton[button_name.length];
 
         for (int i = 0; i < bt.length; i++) {
             bt[i] = new JButton(button_name[i]);
-            button_panel.add(bt[i]); // 다음 내용들을 bt_panel에 추가하기
-            bt[i].setSize(-100,10);
-            bt[i].setFont(new Font("Arial", Font.PLAIN, 13));
-
-            bt[i].setBorderPainted(false); // 버튼 테두리 없애기
-            bt[i].setOpaque(false); // 맥에서 색이 안먹는 것 해결
+            button_panel.add(bt[i]);
+            bt[i].setFont(new Font("Arial", Font.PLAIN, 16));
+            bt[i].setBorderPainted(false);
+            bt[i].setOpaque(false);
         }
-        bt[0].setFont(new Font("Arial", Font.BOLD, 20));
-        bt[5].setFont(new Font("Arial", Font.BOLD, 20));
-        bt[9].setFont(new Font("Arial", Font.BOLD, 20));
-/*
 
-            if (((i >= 4) && (i <= 6)) || ((i >= 8) && (i <= 10)) || ((i >= 12) && (i <= 14)) || (i == 16)|| (i == 17))
-                bt[i].addActionListener(new Number()); // 숫자버튼을 누르면
-            else if(i==18){
-                bt[i].addActionListener(new equal());
-            }
-            else
-                bt[i].addActionListener(new Operator());
-        }
-        */
+        // 강조할 버튼의 폰트 조정
+        bt[0].setFont(new Font("Arial", Font.BOLD, 23));
+        bt[5].setFont(new Font("Arial", Font.BOLD, 23));
+        bt[9].setFont(new Font("Arial", Font.BOLD, 23));
+        bt[13].setFont(new Font("Arial", Font.BOLD, 23));
+        bt[14].setFont(new Font("Arial", Font.BOLD, 23));
 
-       // 화면에 띄우기
+        // 사각형
+        JButton rectangleButton = new JButton();
 
+    // 캔버스 패널 설정
+    JPanel canvas_panel = new JPanel();
+        canvas_panel.setLayout(null);
+        canvas_panel.setBounds(250, 0, 950, 800);
+        canvas_panel.setBackground(Color.WHITE);
+        frame.add(canvas_panel);
 
+    // 텍스트 영역 설정
+    JTextArea textArea = new JTextArea();
+        textArea.setText("텍스트를 입력하시오");
+        textArea.setBounds(200, 0, 400, 50);
+        canvas_panel.add(textArea);
 
-    } // GUI class 닫는 괄호
-}
+        // 사각형 그리기 패널 설정
+        Tool tool = new Tool();
+        tool.setBounds(0, 300, 950, 800);
+        tool.setOpaque(false);
+        canvas_panel.add(tool);
 
-        /*
-//패널에 그림두기
-    class GraphicDraw {
-        public void paint(Graphics g) {//그래픽의 객체 g를 이용하여 그림그리는 메소드 호출, 그림그리기
+        frame.setVisible(true);
 
+    } //GUI생성자
 
-            g.drawLine(100, 100, 200, 200);
-            g.drawRect(100, 100, 200, 200); //사각형 그리기
-            g.drawOval(100, 100, 200, 200); //원 그리기
-            g.drawString("텍스트", 100, 100);
-            g.drawArc(100, 100, 200, 200, 180, 180); //곡선 그리기
+    private class Tool extends JPanel {
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawRect(400, 100, 150, 150); // 사각형 그리기
+            g.drawOval(400,300,150,150); //원 그리기
+            g.drawLine(220, 100, 350, 250); // 선 그리기
+            g.drawArc(100,100,150,150,90,60); //곡선 그리기
         }
     }
-    */
-
-//마우스로 그림그리기
-  //  class DrawLine extends JFrame{}
+} //GUI 클래스
