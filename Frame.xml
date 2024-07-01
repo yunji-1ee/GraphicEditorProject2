@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.10" class="java.beans.XMLDecoder">
+ <object class="javax.swing.JFrame" id="JFrame0">
+  <void property="size">
+   <object class="java.awt.Dimension" id="Dimension0">
+    <void class="java.awt.Dimension" method="getField">
+     <string>width</string>
+     <void method="set">
+      <object idref="Dimension0"/>
+      <int>200</int>
+     </void>
+    </void>
+    <void class="java.awt.Dimension" method="getField">
+     <string>height</string>
+     <void method="set">
+      <object idref="Dimension0"/>
+      <int>100</int>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void property="contentPane">
+   <void property="size">
+    <object class="java.awt.Dimension" id="Dimension1">
+     <void class="java.awt.Dimension" method="getField">
+      <string>width</string>
+      <void method="set">
+       <object idref="Dimension1"/>
+       <int>200</int>
+      </void>
+     </void>
+     <void class="java.awt.Dimension" method="getField">
+      <string>height</string>
+      <void method="set">
+       <object idref="Dimension1"/>
+       <int>72</int>
+      </void>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="javax.swing.JPanel">
+     <void method="add">
+      <object class="javax.swing.JButton">
+       <string>Hello, world</string>
+       <void method="addActionListener">
+        <object class="java.beans.EventHandler" method="create">
+         <class>java.awt.event.ActionListener</class>
+         <object class="Controller" id="Controller0"/>
+         <string>helloWorld</string>
+        </object>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="javax.swing.JButton">
+       <string>Goodbye, cruel world</string>
+       <void property="background">
+        <object class="java.awt.Color">
+         <int>255</int>
+         <int>0</int>
+         <int>0</int>
+         <int>255</int>
+        </object>
+       </void>
+       <void method="addActionListener">
+        <object class="java.beans.EventHandler" method="create">
+         <class>java.awt.event.ActionListener</class>
+         <object idref="Controller0"/>
+         <string>exit</string>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+    <string>Center</string>
+   </void>
+  </void>
+  <void id="Dimension2" property="minimumSize">
+   <void class="java.awt.Dimension" method="getField">
+    <string>height</string>
+    <void method="set">
+     <object idref="Dimension2"/>
+     <int>67</int>
+    </void>
+   </void>
+  </void>
+  <void property="minimumSize">
+   <object idref="Dimension2"/>
+  </void>
+  <void property="name">
+   <string>frame0</string>
+  </void>
+  <void property="title">
+   <string>My Frame</string>
+  </void>
+  <void id="JLayeredPane0" property="layeredPane">
+   <void id="Boolean0" method="isEnabled"/>
+  </void>
+  <void property="visible">
+   <object idref="Boolean0"/>
+  </void>
+ </object>
+</java>
