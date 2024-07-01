@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11f64b6d-0dfb-4f46-82b0-faea1d7fc557" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Frame.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shapes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Memo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SliderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SliderTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GraphicEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphicEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -59,6 +58,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -77,7 +81,7 @@
       <updated>1719551128128</updated>
       <workItem from="1719551130221" duration="9568000" />
       <workItem from="1719561073036" duration="25489000" />
-      <workItem from="1719646890314" duration="46908000" />
+      <workItem from="1719646890314" duration="50353000" />
     </task>
     <task id="LOCAL-00001" summary="Project2_Day1. interface">
       <option name="closed" value="true" />
@@ -135,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719795954208</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Project2_Day3. afternoon 4:00">
+      <option name="closed" value="true" />
+      <created>1719817155515</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1719817155515</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +178,8 @@
     <MESSAGE value="Project2_Day1. afternoon 6.31" />
     <MESSAGE value="Project2_Day1. afternoon 7:33" />
     <MESSAGE value="Project2_Day3. morning 10:05" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day3. morning 10:05" />
+    <MESSAGE value="Project2_Day3. afternoon 4:00" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day3. afternoon 4:00" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
