@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11f64b6d-0dfb-4f46-82b0-faea1d7fc557" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/SliderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SliderTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shapes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/shapes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GraphicEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphicEditor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +80,7 @@
       <updated>1719551128128</updated>
       <workItem from="1719551130221" duration="9568000" />
       <workItem from="1719561073036" duration="25489000" />
-      <workItem from="1719646890314" duration="50353000" />
+      <workItem from="1719646890314" duration="58096000" />
     </task>
     <task id="LOCAL-00001" summary="Project2_Day1. interface">
       <option name="closed" value="true" />
@@ -147,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719817155515</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Project2_Day3. afternoon 5:10">
+      <option name="closed" value="true" />
+      <created>1719821389139</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719821389140</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +186,8 @@
     <MESSAGE value="Project2_Day1. afternoon 7:33" />
     <MESSAGE value="Project2_Day3. morning 10:05" />
     <MESSAGE value="Project2_Day3. afternoon 4:00" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day3. afternoon 4:00" />
+    <MESSAGE value="Project2_Day3. afternoon 5:10" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day3. afternoon 5:10" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
