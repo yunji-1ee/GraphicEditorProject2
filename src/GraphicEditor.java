@@ -169,9 +169,9 @@ public class GraphicEditor {
                         }
                         case "Style" -> {
                         }
-                        case "SAVE" -> FileManager.saveShapes(box);
+                        case "SAVE" -> LoadSave.saveShapes(box);
                         case "LOAD" -> {
-                            box = FileManager.loadShapes();
+                            box = LoadSave.loadShapes();
                             canvasPanel.repaint();
                         }
                         default -> {

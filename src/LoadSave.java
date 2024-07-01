@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 
-public class FileManager {
+public class LoadSave {
 
     public static void saveShapes(ArrayList<Property> box) {
         try (PrintWriter out = new PrintWriter(new FileWriter("shapes.txt"))) {

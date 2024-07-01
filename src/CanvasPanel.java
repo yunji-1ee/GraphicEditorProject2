@@ -87,13 +87,20 @@ public class CanvasPanel extends JPanel {
         g2.setStroke(new BasicStroke(editor.currentThickness, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
         // 현재 모드에 따라 도형을 그리기
+        //라인
         if (editor.LineMode) {
             g2.drawLine(startX, startY, endX, endY);
-        } else if (editor.CircleMode) {
+        }
+        //원
+        else if (editor.CircleMode) {
             g2.drawOval(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
-        } else if (editor.RectangleMode) {
+        }
+        //사각형
+        else if (editor.RectangleMode) {
             g2.drawRect(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
-        } else if (editor.FreeLineMode) {
+        }
+        //자유곡선
+        else if (editor.FreeLineMode) {
             if (!editor.freeLinePoints.isEmpty()) {
                 Path2D path = new Path2D.Double();
                 path.moveTo(editor.freeLinePoints.get(0).x, editor.freeLinePoints.get(0).y);
