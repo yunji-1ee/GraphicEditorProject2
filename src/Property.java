@@ -10,11 +10,13 @@ public class Property {
     private final Color color; //도형 색상 저장
     private final float thickness; //도형 두께정보 저장
 
+
     //Property 클래스의 생성자 - 초기화
     public Property(Shape shape, Color color, float thickness) {
         this.shape = shape;
         this.color = color;
         this.thickness = thickness;
+
     }
     //도형 반환
     public Shape getShape() {

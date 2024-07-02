@@ -10,6 +10,7 @@ import javax.swing.*;
 
 public class CanvasPanel extends JPanel {
 
+
     private int startX, startY, endX, endY;//좌표설정
 
     private final GraphicEditor editor;
