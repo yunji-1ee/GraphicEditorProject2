@@ -3,17 +3,27 @@ import java.awt.event.*; //이벤트 처리
 import javax.swing.*; //스윙 GUI
 import java.util.ArrayList; //어레이리스트 사용
 
+import static javax.swing.JOptionPane.showOptionDialog;
+
 //메인 클래스 & UI 구성 -프로그램 정의
 public class GraphicEditor {
     public boolean LineMode = false; //선 그리기
     public boolean CircleMode = false; //원 그리기
     public boolean RectangleMode = false; //사각형 그리기
+    public boolean ColoredCircleMode = false; //채워진 원 그리기
+    public boolean ColoredRectangleMode = false; //채워진 사각형 그리기
     public boolean PatternMode = false; //도장찍기
     public boolean FreeLineMode = false; //자유곡선
     public boolean EraserMode = false; //지우개
     public boolean StyleMode = false; // 일단 보류했음
     public float currentThickness = 2.0F; // 굵기 실수형으로 조절
     public Color currentColor = Color.BLACK; // 기본 색상 검정으로 설정
+    public  String [] answer = {"별","화살표","하트"};
+
+
+
+
+
 
     public ArrayList<Property> box = new ArrayList<>(); // 도형 저장하기 (그릴 때마다 초기화되지 않도록)
     public ArrayList<Point> freeLinePoints = new ArrayList<>(); // 프리라인을 만들기 위한 점들 저장할 곳
@@ -33,7 +43,7 @@ public class GraphicEditor {
 
         // 버튼 패널 설정
         JPanel buttonPanel = new JPanel(); // 버튼 패널 생성
-        buttonPanel.setLayout(new GridLayout(15, 1, 5, 5)); // 버튼 패널 레이아웃 설정
+        buttonPanel.setLayout(new GridLayout(16, 1, 5, 5)); // 버튼 패널 레이아웃 설정
         buttonPanel.setBounds(0, 0, 250, 770); // 프레임 내 버튼 패널 좌표
         buttonPanel.setBackground(new Color(230, 230, 220)); // 버튼 패널 배경색 rgb로 설정
         frame.add(buttonPanel); // 프레임에 버튼 패널 넣기
@@ -50,9 +60,9 @@ public class GraphicEditor {
 
         // 버튼들 이름 배열에 정해놓기
         String[] buttonNames = {
-                "[Draw]", "FreeLine : ( \uD83D\uDD8A )", "Line : ( ╱ )", "Circle : ( 〇 )", "Rectangle : ( ⎕ )", // 5
-                "[Property]", "Color : ( 🌈 )", "Thickness : (⠐•● )", "Style", // 4
-                "[More]", "Pattern", "Eraser ✖", "✖ Clear ✖", "LOAD", "SAVE" // 5
+                "[Draw]", "FreeLine : ( \uD83D\uDD8A )", "Line : ( ╱ )", "Circle : ( 〇 )", "Circle : ( ⚫ )", "Rectangle : ( ☐ )","Rectangle : ( ◼ )", // 6
+                "[Property]", "Color : ( 🌈 )", "Thickness : (⠐•● )", // 3
+                "[More]", "Pattern", "Eraser ✖", "✖ Clear ✖", "LOAD", "SAVE" // 6
         };
 
         JButton[] buttons = new JButton[buttonNames.length]; // 버튼 이름 길이만큼 버튼 생성
@@ -81,6 +91,8 @@ public class GraphicEditor {
                             FreeLineMode = true;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
                         }
                         case "Line : ( ╱ )" -> {
                             LineMode = true;
@@ -90,6 +102,8 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
                         }
                         // 원 그리기
                         case "Circle : ( 〇 )" -> {
@@ -100,9 +114,11 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
                         }
                         // 사각형 그리기
-                        case "Rectangle : ( ⎕ )" -> {
+                        case "Rectangle : ( ☐ )" -> {
                             LineMode = false;
                             CircleMode = false;
                             RectangleMode = true;
@@ -110,9 +126,13 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
+
                         }
                         // 패턴 모드
                         case "Pattern" -> {
+
                             LineMode = false;
                             CircleMode = false;
                             RectangleMode = false;
@@ -120,6 +140,8 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
                         }
                         // 모두 지우기
                         case "✖ Clear ✖" -> {
@@ -130,6 +152,8 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
 
                             box.clear(); // 저장한 도형들 클리어
                             canvasPanel.repaint(); //화면 새로고침
@@ -143,8 +167,11 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
+
                             // 컬러츄저다이얼로그를 띄우고 / 현재 색상을 색상창에서 받아온 값으로 설정
-                            currentColor = JColorChooser.showDialog(null, "Choose the Color", currentColor);
+                                currentColor = JColorChooser.showDialog(null, "Choose the Color", currentColor);
                         }
                         case "Thickness : (⠐•● )" -> {
                             LineMode = false;
@@ -154,11 +181,15 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
                             // 두께를 제이옵션으로 입력받아서 설정
                             String input = JOptionPane.showInputDialog("Enter line thickness");
                             currentThickness = Float.parseFloat(input);
                         }
                         case "Eraser ✖" -> {
+                            currentColor = Color.WHITE;
+
                             LineMode = false;
                             CircleMode = false;
                             RectangleMode = false;
@@ -166,8 +197,30 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = true;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
                         }
-                        case "Style" -> {
+                        case "Circle : ( ⚫ )" -> {
+                            LineMode = false;
+                            CircleMode = false;
+                            RectangleMode = false;
+                            PatternMode = false;
+                            FreeLineMode = false;
+                            EraserMode = false;
+                            StyleMode = false;
+                            ColoredCircleMode = true;
+                            ColoredRectangleMode = false;
+                        }
+                        case "Rectangle : ( ◼ )" -> {
+                            LineMode = false;
+                            CircleMode = false;
+                            RectangleMode = false;
+                            PatternMode = false;
+                            FreeLineMode = false;
+                            EraserMode = false;
+                            StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = true;
                         }
                         case "SAVE" -> LoadSave.saveShapes(box);
                         case "LOAD" -> {
@@ -182,17 +235,21 @@ public class GraphicEditor {
                             FreeLineMode = false;
                             EraserMode = false;
                             StyleMode = false;
+                            ColoredCircleMode = false;
+                            ColoredRectangleMode = false;
                         }
                     } // 스위치 조건문
                 }  // 이벤트 퍼폼
+
+
             }); // 액션리스너
         } // 버튼 설정 for문 끝
 
         // 강조할 버튼의 폰트 조정
         buttons[0].setFont(new Font("Serif", Font.BOLD, 23));
-        buttons[5].setFont(new Font("Serif", Font.BOLD, 23));
-        buttons[9].setFont(new Font("Serif", Font.BOLD, 23));
-        buttons[13].setFont(new Font("Serif", Font.BOLD, 20));
+        buttons[7].setFont(new Font("Serif", Font.BOLD, 23));
+        buttons[10].setFont(new Font("Serif", Font.BOLD, 23));
         buttons[14].setFont(new Font("Serif", Font.BOLD, 20));
+        buttons[15].setFont(new Font("Serif", Font.BOLD, 20));
     }
 }
