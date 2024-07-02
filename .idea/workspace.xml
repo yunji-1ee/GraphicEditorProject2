@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11f64b6d-0dfb-4f46-82b0-faea1d7fc557" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Hello.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shapes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/shapes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CanvasPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CanvasPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphicEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphicEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Property.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +80,7 @@
       <workItem from="1719551130221" duration="9568000" />
       <workItem from="1719561073036" duration="25489000" />
       <workItem from="1719646890314" duration="65114000" />
-      <workItem from="1719880339473" duration="20139000" />
+      <workItem from="1719880339473" duration="22279000" />
     </task>
     <task id="LOCAL-00001" summary="Project2_Day1. interface">
       <option name="closed" value="true" />
@@ -184,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719843648566</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Project2_Day4. afternoon 4:47">
+      <option name="closed" value="true" />
+      <created>1719906487180</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1719906487180</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +222,8 @@
     <MESSAGE value="Project2_Day3. afternoon 9:1" />
     <MESSAGE value="Project2_Day3. afternoon 10:29" />
     <MESSAGE value="Project2_Day3. afternoon 11:20" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day3. afternoon 11:20" />
+    <MESSAGE value="Project2_Day4. afternoon 4:47" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project2_Day4. afternoon 4:47" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

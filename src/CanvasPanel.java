@@ -6,7 +6,6 @@ import java.awt.geom.*;
 import javax.swing.*;
 
 
-
 //--------캔버스 패널 설정----------------------------------------------------------------
 
 public class CanvasPanel extends JPanel {
@@ -45,6 +44,7 @@ public class CanvasPanel extends JPanel {
                 Shape shape = null;
 
                 //그림 그리고 지우기 전까지 그 모양 shape에 넣어두기 (그렸던 그림들 유지하기)
+                //프리라인모드
                 if (editor.FreeLineMode) {
 
                     Path2D path = new Path2D.Double();
@@ -56,7 +56,8 @@ public class CanvasPanel extends JPanel {
                     }
                     shape = path;
 
-                } //프리라인모드
+                }
+                //지우개모드
                 else if (editor.EraserMode) {
 
                     Path2D path = new Path2D.Double();
@@ -68,27 +69,37 @@ public class CanvasPanel extends JPanel {
                     }
                     shape = path;
 
-                } //지우개모드
+                }
+                //선그리기
                 else if (editor.LineMode) {
                     shape = new Line2D.Double(startX, startY, endX, endY);
                 }
+                //원그리기
                 else if (editor.CircleMode) {
                     shape = new Ellipse2D.Double(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
                 }
+                //사각형 그리기
                 else if (editor.RectangleMode) {
                     shape = new Rectangle2D.Double(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
                 }
+                //채워진 원 그리기
                 else if (editor.ColoredCircleMode) {
                     shape = new Ellipse2D.Double(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
                 }
+                //채워진 사각형 그리기
                 else if (editor.ColoredRectangleMode) {
                     shape = new Rectangle2D.Double(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
                 }
-                else if (editor.PatternMode) {
+                // 패턴
+                else if (editor.PatternMode)  {
 
-                   // endX,endY
-
+                    Font font = new Font("Arial", Font.PLAIN, 27);
+                    FontRenderContext frc = new FontRenderContext(null, true, true);
+                    TextLayout textLayout = new TextLayout("*☂*̣̩⋆̩", font, frc);
+                    AffineTransform transform = AffineTransform.getTranslateInstance(startX, startY);
+                    shape = textLayout.getOutline(transform);
                 }
+
 
                 if (shape != null) { //뭔가 그림이 있다면 box에 더하기
                     editor.box.add(new Property(shape, editor.currentColor, editor.currentThickness));
@@ -118,21 +129,32 @@ public class CanvasPanel extends JPanel {
         });
     }
 
-
     // 그림 그리기ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡpaintㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setStroke(new BasicStroke(editor.currentThickness, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
 
         // 박스에 넣어둔 도형들 그리기---------------------------------------------------------------------------------------------------------
         for (Property property : editor.box) { // 저장된 도형들을 모두
+
             g2.setColor(property.getColor());
+
             g2.setStroke(new BasicStroke(property.getThickness(), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-            g2.draw(property.getShape());   //그림그리기
+
+            g2.draw(property.getShape());
+            /*
+            if (property.getShape() instanceof RectangularShape && !(property.getShape() instanceof Line2D)) {
+                g2.fill(property.getShape());
+            } else {
+                g2.draw(property.getShape());
+            }
+            */
+
         }
 
         g2.setColor(editor.currentColor);
@@ -181,8 +203,7 @@ public class CanvasPanel extends JPanel {
             }
         }
         else if (editor.PatternMode) {
-            g2.drawString("♥ ♡", startX, startY);
-             }
+           }
         else if (editor.ColoredRectangleMode) {
             g2.fillRect(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
         }
@@ -190,6 +211,5 @@ public class CanvasPanel extends JPanel {
             g2.fillOval(Math.min(startX, endX), Math.min(startY, endY), Math.abs(endX - startX), Math.abs(endY - startY));
         }
 
-        }
     }
-
+}
