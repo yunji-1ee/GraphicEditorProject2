@@ -3,6 +3,9 @@ import java.awt.event.*;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
@@ -10,6 +13,18 @@ import javax.swing.*;
 
 public class CanvasPanel extends JPanel {
 
+    public void saveToPNG(){
+        BufferedImage image = new BufferedImage(this.getWidth(),this.getHeight(),BufferedImage.TYPE_INT_RGB);
+        Graphics2D gImage = image.createGraphics();
+        this.paint(gImage);
+        try{
+            File filename = null;
+            ImageIO.write(image,"PNG",new File(filename+".PNG"));
+            JOptionPane.showMessageDialog(this,"저장 성공");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
     private int startX, startY, endX, endY;//좌표설정
 
