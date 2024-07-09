@@ -222,7 +222,10 @@ public class GraphicEditor {
                             ColoredCircleMode = false;
                             ColoredRectangleMode = true;
                         }
-                        case "SAVE" -> LoadSave.saveShapes(box);
+                        case "SAVE" -> {
+                            LoadSave.saveShapes(box);
+                            canvasPanel.saveToPNG();
+                        }
                         case "LOAD" -> {
                             box = LoadSave.loadShapes();
                             canvasPanel.repaint();
